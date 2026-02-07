@@ -11,12 +11,16 @@ export const getNotes = async (req, res) => {
 
 export const getNoteById = async (req, res) => {
   try {
-    const noteID = req.params.id;
-    const note = Note.findById(noteID);
+    const note = await Note.findById(req.params.id);
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
     res.status(200).json(note);
   } catch (error) {
-    res.status(500).send({ message: error.message });
-    console.error("Error fetching note by ID:", error);
+    console.error("Get note error:", error.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -54,7 +58,7 @@ export const updateNote = async (req, res) => {
   }
 };
 
-export const deleteNote = async(req, res) => {
+export const deleteNote = async (req, res) => {
   try {
     const noteId = req.params.id;
     const deletedNote = await Note.findByIdAndDelete(noteId);
