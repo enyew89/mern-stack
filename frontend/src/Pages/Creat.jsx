@@ -25,7 +25,7 @@ function Creat() {
       toast.success("Note added successfully!");
       setTitle("");
       setContent("");
-    //   navigate("/");
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.status === 429) {
         toast.error("You are being rate limited. Please try again later.");
