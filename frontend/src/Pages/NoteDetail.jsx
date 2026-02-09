@@ -50,7 +50,7 @@ function NoteDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 px-20 py-4  gap-4 w-1/2 mx-auto rounded shadow-lg mt-10  transition-all duration-300 ease-in-out opacity-100 animate-fadeIn">
+    <div className="min-h-screen bg-base-200 px-4 sm:px-8 lg:px-20 py-4 max-w-3xl mx-auto rounded shadow-lg mt-10 transition-all duration-300 ease-in-out animate-fadeIn">
       {showConfirmModal && (
         <ConfirmModal
           title="Are you sure you want to delete this note?"
@@ -61,7 +61,7 @@ function NoteDetail() {
         />
       )}
 
-      <div className="flex justify-between mb-4 gap-20">
+      <div className="flex flex-col sm:flex-row sm:justify-between mb-4 gap-4">
         <Link to="/" className="btn btn-ghost">
           <ArrowLeftIcon /> Back To Home
         </Link>
@@ -73,7 +73,7 @@ function NoteDetail() {
         </button>
       </div>
 
-      <div className="p-4 max-w-md mx-auto rounded shadow-lg mt-10 bg-primary text-primary-content">
+      <div className="p-4 w-full rounded shadow-lg mt-10 bg-primary text-primary-content">
         <h1 className="text-2xl font-bold mb-4">Update Note</h1>
 
         <form onSubmit={updateNote}>
@@ -97,7 +97,7 @@ function NoteDetail() {
           </div>
 
           <div className="flex justify-end">
-            <button type="submit" className="btn outline justify-start">
+            <button type="submit" className="btn outline">
               Save Changes
             </button>
           </div>
